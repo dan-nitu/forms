@@ -15,6 +15,11 @@ const SimpleInput = (props) => {
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value);
+
+    if (event.target.value.trim() !== '') {
+      setEnteredNameIsValid(true);
+    }
+    // use event.target.value instead of enteredName because you might be reffering to an old state (since react shedules state updates and doesn't do it immediately)
   };
 
   const nameInputBlurHandler = (event) => {
@@ -22,7 +27,6 @@ const SimpleInput = (props) => {
 
     if (enteredName.trim() === '') {
       setEnteredNameIsValid(false);
-      return;
     }
   };
 
